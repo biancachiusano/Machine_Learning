@@ -22,4 +22,5 @@ def sigmoidGradient(z):
     
     return g
 
+# Testing
 print(sigmoidGradient(0))
