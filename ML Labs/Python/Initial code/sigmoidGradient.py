@@ -1,3 +1,4 @@
+import numpy as np
 from sigmoid import sigmoid
 
 def sigmoidGradient(z):
@@ -15,8 +16,10 @@ def sigmoidGradient(z):
 # Instructions: Compute the gradient of the sigmoid function evaluated at
 #               each value of z (z can be a matrix, vector or scalar).
 
-
+    g = np.dot(sigmoid(z), (1-sigmoid(z)))
 
 # =============================================================
     
     return g
+
+print(sigmoidGradient(0))
