@@ -2,11 +2,6 @@ import numpy as np
 
 from sigmoid import sigmoid
 
-def softmax(x):
-    f_x = np.exp(x) / np.sum(np.exp(x))
-    f_x = np.round(np.argmax(f_x)+1)
-    return f_x
-
 def predict(Theta1, Theta2, X):
 #PREDICT Predict the label of an input given a trained neural network
 #   p = PREDICT(Theta1, Theta2, X) outputs the predicted label of X given the

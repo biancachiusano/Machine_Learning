@@ -2,6 +2,9 @@ import numpy as np
 from sigmoid import sigmoid
 from sigmoidGradient import sigmoidGradient
 
+# ABOUT THIS CLASS:
+# I implemented the cost funciton and it runs, however I am not getting the correct relative Difference and I don't know why
+
 def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X, y, lambda_value):
 #NNCOSTFUNCTION Implements the neural network cost function for a two layer
 #neural network which performs classification
