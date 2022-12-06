@@ -23,4 +23,4 @@ def sigmoidGradient(z):
     return g
 
 # Testing
-print(sigmoidGradient(0))
+#print(sigmoidGradient(0)) # Returns exactly 0.25

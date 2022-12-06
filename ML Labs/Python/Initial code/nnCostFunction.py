@@ -73,9 +73,43 @@ def nnCostFunction(nn_params, input_layer_size, hidden_layer_size, num_labels, X
 #       first time.
 #
 
+    ones = np.ones([m, 1])
+    X = np.column_stack((ones, X))
 
+    for i in range(m):
+        # Step 1: Set the input layers values (a(1) to the tth training example x(t)
+        # Perform a feedforward pass computing the activations for z(2), a(2), z(3) a(3) for layers 2 and 3
+        a0 = X[i]
+        z1 = np.dot(Theta1, a0)
+        a1 = sigmoid(z1)
+        a1 = np.concatenate((np.array([1, ]), a1), axis=None)
+        z2 = np.dot(Theta2, a1)
+        a2 = sigmoid(z2)
 
+        # Step 2: For each unit k in the layer 3 (output layer), set delta(3) = a(3)-y(k)
+        # yk is either (0,1) and it indicates whether the current training example
+        # belongs to class k (yk = 1) or another class (yk = 0)
+        delta3 = a2 - y[i]
 
+        # Step 3: For the hidden Layer l = 2 set:
+        gradient = sigmoidGradient(z1)
+        delta2 = np.multiply(np.dot(Theta2[:, 1:].T, delta3), gradient)
+
+        # Step 4: Accumulate the gradient from this example using the following formula
+
+        delta3 = delta3.reshape((np.shape(delta3)[0], 1))
+        a1 = a1.reshape((np.shape(a1)[0], 1))
+        Theta2_grad += np.dot(delta3, a1.T)
+
+        delta2 = delta2.reshape((np.shape(delta2)[0], 1))
+        a0 = a0.reshape((np.shape(a0)[0], 1))
+
+        Theta1_grad += np.dot(delta2, a0.T)
+
+    # Step 5: Obtain the unregularised gradient for the neural network cost function by dividing
+    # the accumulated gradients by 1/m
+    Theta1_grad = Theta1_grad / m
+    Theta2_grad = Theta2_grad / m
 
 # -------------------------------------------------------------
 

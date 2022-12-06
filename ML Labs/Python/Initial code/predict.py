@@ -41,11 +41,9 @@ def predict(Theta1, Theta2, X):
         a2 = np.concatenate((np.array([1, ]), a2), axis=None)
         z3 = np.dot(Theta2, a2)
         a3 = sigmoid(z3)
-        # Trail:
-        #np.round(np.argmax(a3) + 1)
-        #p[i] = softmax(a3)
-        p[i] = np.round(np.argmax(a3) + 1) # ALSO WORKS WITHOUT SOFTMAX
-        # TODO: CHECK
+
+        p[i] = np.round(np.argmax(a3) + 1)
+
 
     # Returns the neural network predictions
     return p

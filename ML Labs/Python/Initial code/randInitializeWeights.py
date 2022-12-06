@@ -20,8 +20,9 @@ def randInitializeWeights(L_in, L_out):
 #
 # Note: The first row of W corresponds to the parameters for the bias units
 #
-
-
+    ones = np.ones([L_in,1])
+    randomW = np.random.rand(L_in, L_out)
+    W = np.column_stack((ones, randomW))
     
 # =========================================================================
 
